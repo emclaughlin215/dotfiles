@@ -18,18 +18,15 @@ fi
 # Make utilities available
 PATH="$DOTFILES_DIR/bin:$PATH"
 
-# Adding bash completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
 # Set LSCOLORS
-eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
+# eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Source the dotfiles (order matters)
-if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,path, prompt}; do
+
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,path,prompt}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
-  done
-fi
+done
+
 
 # Clean up
 
