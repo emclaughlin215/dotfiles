@@ -1,0 +1,17 @@
+function mkcd() {
+        mkdir $@ && cd $_ && echo "You are now in `pwd`"
+}
+
+function gco () {
+    read -p  "Which branch would you like to checkout? " branchvar
+    git checkout $branchvar
+}
+
+function gcm() {
+        git commit -m "$@"
+}
+
+function qs() {
+    read -p "Which version would you like to quickstart (https://publish.artifactory.palantir.build/artifactory/internal-dist-release/com/palantir/gotham/quickstart/)? " qsversion
+	docker run -p 3280:3280 -p 3287:3287 publish.docker.palantir.build/pg/quickstart:$qsversion && echo 'QuickStarting starting $_ , and will now be running on https://localhost:3280'
+}
